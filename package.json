@@ -11,9 +11,8 @@
   },
 
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "parcel --port 3000 src/index.pug --open",
-    "build": "parcel build src/index.pug --no-source-maps --public-url ./"
+    "start": "parcel ./src/pages/*.pug ./src/pages/**/*.pug --port 3000 --open",
+    "build": "rmdir dist /s /q && parcel build ./src/pages/*.pug ./src/pages/**/*.pug --no-source-maps"
   },
   "repository": {
     "type": "git",
@@ -27,8 +26,9 @@
   },
   "homepage": "https://github.com/rdmitrievsky/middle.messenger.praktikum.yandex#readme",
   "devDependencies": {
-    "@parcel/transformer-pug": "^2.2.1",
-    "@parcel/transformer-sass": "^2.2.1",
-    "parcel": "^2.2.1"
+    "@parcel/packager-raw-url": "2.3.1",
+    "@parcel/transformer-pug": "2.3.1",
+    "@parcel/transformer-sass": "2.3.1",
+    "parcel": "2.3.1"
   }
 }

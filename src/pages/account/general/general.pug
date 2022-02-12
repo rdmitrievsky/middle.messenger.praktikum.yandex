@@ -10,13 +10,13 @@ mixin links(name, url)
             span= name
 
 block links
-    link(rel="stylesheet", href="./general.sass")
+    link(rel="stylesheet", href="general.sass")
 block main
     -
         let buttons = [
             {name: 'Изменить данные', url: '../editinfo/editinfo.pug', class: 'user-control__item_blue'},
             {name: 'Изменить пароль', url: '../editpassword/editpassword.pug', class: 'user-control__item_blue'},
-            {name: 'Выйти', url: '../../../index.pug', class: 'user-control__item_red'}
+            {name: 'Выйти', url: '../../index.pug', class: 'user-control__item_red'}
         ]
     .container.container_flex
         a.button(href="../../chat/chatlayout.pug")
