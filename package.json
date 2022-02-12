@@ -11,8 +11,9 @@
   },
 
   "scripts": {
+    "clear": "rmdir dist /s /q",
     "start": "parcel ./src/pages/*.pug ./src/pages/**/*.pug --port 3000 --open",
-    "build": "rmdir dist /s /q && parcel build ./src/pages/*.pug ./src/pages/**/*.pug --no-source-maps"
+    "build": "parcel build ./src/pages/*.pug ./src/pages/**/*.pug --no-source-maps"
   },
   "repository": {
     "type": "git",
