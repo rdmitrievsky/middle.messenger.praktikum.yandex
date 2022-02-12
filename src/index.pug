@@ -1,0 +1,19 @@
+extends ./layout/main/main.pug
+
+mixin list(link, type, name)
+    include ./layout/button/button.pug
+mixin inputLabel(span, type, name)
+    label.login__label
+        span.login__label__span= span
+        input.login__label__input(type=type, name=name, required)
+block links
+    link(rel="stylesheet", href="./index.sass")
+block main
+    .container
+        form#qweq.login.login__form(action="")
+            h3.login__form__label Вход
+            .labels
+                +inputLabel('Логин','text','login')
+                +inputLabel('Пароль','password','password')
+            +list('./pages/chat/chatlayout.pug','prime','Авторизоваться')
+            +list('./pages/home/registration/registration.pug','second','Нет аккаунта?')

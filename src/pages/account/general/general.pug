@@ -1,0 +1,42 @@
+extends ../../../layout/main/main.pug
+
+mixin list(name, value)
+    .user-info__item
+        span.user-info__item_bold= name
+        span.user-info__item_light= value
+mixin links(name, url)
+    .user-control__item
+        a(href=url)&attributes(attributes)
+            span= name
+
+block links
+    link(rel="stylesheet", href="./general.sass")
+block main
+    -
+        let buttons = [
+            {name: 'Изменить данные', url: '../editinfo/editinfo.pug', class: 'user-control__item_blue'},
+            {name: 'Изменить пароль', url: '../editpassword/editpassword.pug', class: 'user-control__item_blue'},
+            {name: 'Выйти', url: '../../../index.pug', class: 'user-control__item_red'}
+        ]
+    .container.container_flex
+        a.button(href="../../chat/chatlayout.pug")
+            div
+        .display
+            section.name-avatar
+                button#changeAvatar
+                span Иван
+            section.user-info
+                each line in personalInfo
+                    +list(line.name, line.val)
+            section.user-control
+                each button in buttons
+                    +links(button.name, button.url)(class=button.class)
+    block modal
+        section#modal.modal(data-modal='change-avatar')
+            div.modal__container
+                span Загрузите файл
+                a(href="#") Выбрать файл на компьютере
+                a#applyAvatar.button.button_prime
+                    span Поменять
+    block scripts
+        script(src='index.js')

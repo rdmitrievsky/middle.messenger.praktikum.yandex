@@ -1,0 +1,34 @@
+{
+  "name": "middle.messenger.praktikum.yandex",
+  "version": "1.0.0",
+  "description": "---",
+  "browserslist": "> 0.5%, last 2 versions, not dead",
+  "engines": {
+    "node": ">= 14"
+  },
+  "targets": {
+    "main": false
+  },
+
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "parcel --port 3000 src/index.pug --open",
+    "build": "rmdir dist /s /q && parcel build src/index.pug --no-source-maps --public-url ./"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rdmitrievsky/middle.messenger.praktikum.yandex.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rdmitrievsky/middle.messenger.praktikum.yandex/issues"
+  },
+  "homepage": "https://github.com/rdmitrievsky/middle.messenger.praktikum.yandex#readme",
+  "devDependencies": {
+    "@parcel/transformer-pug": "^2.2.1",
+    "@parcel/transformer-sass": "^2.2.1",
+    "parcel": "^2.2.1"
+  }
+}

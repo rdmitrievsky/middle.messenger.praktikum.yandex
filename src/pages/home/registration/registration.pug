@@ -1,0 +1,24 @@
+extends ../../../layout/main/main.pug
+
+mixin list(link, type, name)
+    include ../../../layout/button/button.pug
+mixin inputLabel(span, type, name)
+    label.login__label
+        span.login__label__span= span
+        input.login__label__input(type=type, name=name)
+
+block links
+    link(rel="stylesheet", href="./registration.sass")
+block main
+    .container
+        form#qweq.login.login__form(action="")
+            h3.login__form__label Регистрация
+            .labels
+                +inputLabel('Почта','text','email')
+                +inputLabel('Логин','text','login')
+                +inputLabel('Имя','text','first_name')
+                +inputLabel('Фамилия','text','second_name')
+                +inputLabel('Телефон','text','phone')
+                +inputLabel('Пароль','text','password')
+            +list('../../chat/chatlayout.pug','prime','Зарегистрироваться')
+            +list('../../chat/chatlayout.pug','second','Войти')

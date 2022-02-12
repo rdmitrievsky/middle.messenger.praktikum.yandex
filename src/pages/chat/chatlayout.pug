@@ -1,0 +1,29 @@
+extends ../../layout/main/main.pug
+block links
+    link(rel="stylesheet", href="./chat.sass")
+block main
+    .container.container_flex
+        .users
+            .users__control
+                a(href="../account/general/general")
+                    span Профиль
+            label.users__search
+                input(type="text", name="user-search")
+                span Поиск
+            .users__wrapper
+                each val in chatUsers
+                    a.user(href="./chat-dialog/chatdialog.pug")
+                        .user__avatar
+                        .user__info
+                            .user__info__name
+                                span= val.name
+                            .user__info__status
+                                span= val.message
+                        .user__date
+                            .user__date__time 
+                                span= val.time
+                            if val.unread
+                                .user__date__unread 
+                                    span= val.unread
+        .display
+            span Выберите чат чтобы отправить сообщение

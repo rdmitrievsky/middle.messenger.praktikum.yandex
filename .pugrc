@@ -1,0 +1,29 @@
+{
+  "locals": {
+    "name": "1P2uggy1",
+    "chatUsers": [
+      {name: 'John Doe', message: 'bebebe', time: '10:49', unread: 0},
+      {name: 'John Doe1', message: 'bebebe', time: '10:49', unread: 3},
+      {name: 'John Doe2', message: 'bebebe', time: '10:49', unread: 1},
+      {name: 'John Doe3', message: 'bebebe', time: '10:49', unread: 0},
+      {name: 'John Doe4', message: 'bebebe', time: '10:49', unread: 0},
+      {name: 'John Doe5', message: 'bebebe', time: '10:49', unread: 1}
+    ],
+    "personalInfo": [
+      {name: 'Почта',val: 'pochta@yandex.ru'},
+      {name: 'Логин',val: 'ivanivanov'},
+      {name: 'Имя',val: 'Иван'},
+      {name: 'Фамилия',val: 'Иванов'},
+      {name: 'Имя в чате',val: 'Иван'},
+      {name: 'Телефон',val: '+7 (909) 967 30 30'}
+    ],
+    "personalInfoToEdit": [
+      {name: 'Почта',val: 'pochta@yandex.ru'},
+      {name: 'Логин',val: 'ivanivanov'},
+      {name: 'Имя',val: 'Иван'},
+      {name: 'Фамилия',val: 'Иванов'},
+      {name: 'Имя в чате',val: 'Иван'},
+      {name: 'Телефон',val: '+7 (909) 967 30 30'}
+    ]
+  }
+}
