@@ -13,7 +13,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "parcel --port 3000 src/index.pug --open",
-    "build": "rmdir dist /s /q && parcel build src/index.pug --no-source-maps --public-url ./"
+    "build": "parcel build src/index.pug --no-source-maps --public-url ./"
   },
   "repository": {
     "type": "git",
