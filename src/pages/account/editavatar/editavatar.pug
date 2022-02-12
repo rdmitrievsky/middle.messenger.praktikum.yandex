@@ -3,13 +3,6 @@ extends ../../../layout/main/main.pug
 block links
     link(rel="stylesheet", href="editavatar.sass")
 block main
-    -
-        let qwe = [{name: 'Почта',val: 'pochta@yandex.ru'},
-            {name: 'Логин',val: 'ivanivanov'},
-            {name: 'Имя',val: 'Иван'},
-            {name: 'Фамилия',val: 'Иванов'},
-            {name: 'Имя в чате',val: 'Иван'},
-            {name: 'Телефон',val: '+7 (909) 967 30 30'}]
     .container.container_flex
         a.button(href="#")
             div
@@ -17,7 +10,7 @@ block main
             section.name-avatar
                 div
             section.user-info
-                each line in qwe
+                each line in personalInfo
                     label
                         span= line.name
                         input(type="text", placeholder=line.val)

@@ -24,6 +24,14 @@
       {name: 'Фамилия',val: 'Иванов'},
       {name: 'Имя в чате',val: 'Иван'},
       {name: 'Телефон',val: '+7 (909) 967 30 30'}
+    ],
+    "registrationFileds": [
+      {text: 'Почта',type: 'text',name: 'email'},
+      {text: 'Логин',type: 'text',name: 'login'},
+      {text: 'Имя',type: 'text',name: 'first_name'},
+      {text: 'Фамилия',type: 'text',name: 'second_name'},
+      {text: 'Телефон',type: 'text',name: 'phone'},
+      {text: 'Пароль',type: 'text',name: 'password'}
     ]
   }
 }

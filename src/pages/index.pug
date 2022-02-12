@@ -1,6 +1,6 @@
 extends ../layout/main/main.pug
 
-mixin list(link, type, name)
+mixin btn(link, type, name)
     include ../layout/button/button.pug
 mixin inputLabel(span, type, name)
     label.login__label
@@ -15,5 +15,5 @@ block main
             .labels
                 +inputLabel('Логин','text','login')
                 +inputLabel('Пароль','password','password')
-            +list('chat/chatlayout.pug','prime','Авторизоваться')
-            +list('home/registration/registration.pug','second','Нет аккаунта?')
+            +btn('chat/chatlayout.pug','prime','Авторизоваться')
+            +btn('home/registration/registration.pug','second','Нет аккаунта?')
