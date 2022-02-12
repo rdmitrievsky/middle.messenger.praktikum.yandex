@@ -13,6 +13,6 @@ block main
                 each line in personalInfoToEdit
                     label
                         span= line.name
-                        input(type="text", placeholder=line.val)
+                        input(type="text",  placeholder=line.val, name=line.inputName)
             a.button.button_prime(href="../general/general.pug")
                 span Сохранить

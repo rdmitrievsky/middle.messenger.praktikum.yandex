@@ -18,12 +18,12 @@
       {name: 'Телефон',val: '+7 (909) 967 30 30'}
     ],
     "personalInfoToEdit": [
-      {name: 'Почта',val: 'pochta@yandex.ru'},
-      {name: 'Логин',val: 'ivanivanov'},
-      {name: 'Имя',val: 'Иван'},
-      {name: 'Фамилия',val: 'Иванов'},
-      {name: 'Имя в чате',val: 'Иван'},
-      {name: 'Телефон',val: '+7 (909) 967 30 30'}
+      {name: 'Почта',val: 'pochta@yandex.ru', inputName: 'email'},
+      {name: 'Логин',val: 'ivanivanov', inputName: 'login'},
+      {name: 'Имя',val: 'Иван', inputName: 'first_name'},
+      {name: 'Фамилия',val: 'Иванов', inputName: 'second_name'},
+      {name: 'Имя в чате',val: 'Иван', inputName: 'display_name'},
+      {name: 'Телефон',val: '+7 (909) 967 30 30', inputName: 'phone'}
     ],
     "registrationFileds": [
       {text: 'Почта',type: 'text',name: 'email'},
