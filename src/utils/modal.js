@@ -1,4 +1,4 @@
-modalControl = (buttonId, modalData, closeModal) => {
+const modalControl = (buttonId, modalData, closeModal) => {
     let button = document.getElementById(buttonId)
     let modal = document.getElementById('modal')
     let buttonApply = document.getElementById(closeModal)
