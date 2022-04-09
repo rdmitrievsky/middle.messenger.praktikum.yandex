@@ -1,0 +1,1 @@
+export { Tst as default } from "./tst"
