@@ -1,6 +1,6 @@
 import { Block } from "../../core";
 
-import './general/general.sass'
+import './general.sass'
 
 export class Account extends Block {
     render() {
