@@ -10,6 +10,10 @@ interface ButtonProps {
 
 export class Button extends Block {
   constructor({text, type, onClick}: ButtonProps) {
+    // const onClick = (e: MouseEvent) => {
+    //   console.log('TADA');
+    //   e.preventDefault();
+    // }
     super({text, type, events: {click: onClick}});
   }
 

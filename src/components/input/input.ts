@@ -19,7 +19,7 @@ export class Input extends Block {
     protected render(): string {
       // language=hbs
       return `
-        <input class="login__label__input" type="{{type}}" name="{{name}}">
+        <input value="{{value}}" class="login__label__input" type="{{type}}" name="{{name}}">
       `;
     }
 }
