@@ -8,7 +8,7 @@ export class Chat extends Block {
         return `
         <div class="container container_flex">
             <div class="users">
-                <div class="users__control"><a href="/account/general/general.html"><span>Профиль</span></a></div>
+                {{{Link text="Профиль" classes="users__control" href="/profile"}}}
                 <label class="users__search"><input type="text" name="user-search"><span>Поиск</span></label>
                 <div class="users__wrapper">
                     <a class="user" href="/chat/chat-dialog/chatdialog.html">
