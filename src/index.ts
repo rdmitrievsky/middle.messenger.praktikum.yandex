@@ -14,14 +14,6 @@ Object.values(components).forEach((component) => {
   registerComponent(component.default);
 });
 
-class MyComponent extends Block {
-    render() {
-        return `
-            <div>hello world11</div>
-        `;
-    }
-}
-
 document.addEventListener("DOMContentLoaded", () => {
     if (window.location.pathname === '/') {
         renderDOM(Tst);

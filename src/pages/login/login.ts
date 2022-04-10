@@ -3,14 +3,6 @@ import validation from "../../utils/inputsVerefications";
 import { renderDOM } from "../../core";
 import Chat from "../chat";
 
-class MyComponent extends Block {
-    render() {
-        return `
-            <div>hello world11</div>
-        `;
-    }
-}
-
 export class Tst extends Block {
     protected getStateFromProps() {
         this.state = {
@@ -36,7 +28,7 @@ export class Tst extends Block {
                 };
                 this.setState(nextState)
                 
-                let qwew: boolean = Object.values<string>(this.state.errors).some(i => {
+                const qwew: boolean = Object.values<string>(this.state.errors).some(i => {
                     return i.length > 0
                 })
 
@@ -47,7 +39,7 @@ export class Tst extends Block {
                 e.preventDefault()
             },
             singleValidate: (e: { target: HTMLInputElement }) => {
-                let tarfet = e.target
+                const tarfet = e.target
                 const values = {
                     login: (this.refs.login as HTMLInputElement).value,
                     password: (this.refs.password as HTMLInputElement).value
@@ -63,7 +55,7 @@ export class Tst extends Block {
         }
     }
     render() {
-        let { values, errors } = this.state
+        const { values, errors } = this.state
         // language=hbs
         return `
             <main>
