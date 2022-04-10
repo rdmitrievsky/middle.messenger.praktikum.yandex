@@ -12,7 +12,7 @@
   "scripts": {
     "clear": "rmdir dist /s /q",
     "start": "parcel src/index.html --no-source-maps --port 3000 --open",
-    "build": "parcel build src/index.html --no-source-maps --no-minify"
+    "build": "parcel build src/index.html --no-minify"
   },
   "repository": {
     "type": "git",
