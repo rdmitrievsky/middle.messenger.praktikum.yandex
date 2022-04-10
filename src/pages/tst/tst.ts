@@ -1,6 +1,7 @@
 import { Block } from "../../core";
 import validation from "../../utils/inputsVerefications";
 import { renderDOM } from "../../core";
+import Chat from "../chat";
 
 class MyComponent extends Block {
     render() {
@@ -41,7 +42,7 @@ export class Tst extends Block {
                 })
 
                 if (!qwew) {
-                    renderDOM(MyComponent)
+                    renderDOM(Chat)
                 }
 
                 e.preventDefault()
