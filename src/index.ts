@@ -1,5 +1,5 @@
 import { Block, renderDOM, registerComponent }  from './core';
-import Tst from './pages/tst';
+import Tst from './pages/login';
 import Chat from './pages/chat';
 import { Account } from './pages/account/general';
 import { EditProfile } from './pages/account/editinfo/editprofile';
