@@ -81,6 +81,7 @@ export class Tst extends Block {
                         {{{Button text="Авторизоваться" type="prime" onClick=onValidate}}}
                         {{{Link href="/registration" type="second" classes="button button_second" childrenClass="button__text" text="Нет аккаунта?"}}}
                     </form>
+                    <a href="/chat">chat</a>
                 </div>
             </main>
         `
