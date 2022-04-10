@@ -1,0 +1,18 @@
+extends ../../../layout/main/main.pug
+
+block links
+    link(rel="stylesheet", href="editavatar.sass")
+block main
+    .container.container_flex
+        a.button(href="#")
+            div
+        .display
+            section.name-avatar
+                div
+            section.user-info
+                each line in personalInfo
+                    label
+                        span= line.name
+                        input(type="text", placeholder=line.val)
+            a.button.button_prime(href="../general/general.pug")
+                span Сохранить
