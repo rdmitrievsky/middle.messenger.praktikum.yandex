@@ -70,9 +70,8 @@ export default class Block<P = any> {
   _componentDidMount(props: P) {
     this.componentDidMount(props);
   }
-
-  componentDidMount(props: P) {
-  }
+  //eslint-disable-next-line
+  componentDidMount(props: P) {}
 
   _componentDidUpdate(oldProps: P, newProps: P) {
     const response = this.componentDidUpdate(oldProps, newProps);
@@ -120,7 +119,7 @@ export default class Block<P = any> {
 
   protected render(): string {
     return '';
-  };
+  }
 
   getContent(): HTMLElement {
     // Хак, чтобы вызвать CDM только после добавления в DOM
@@ -136,8 +135,6 @@ export default class Block<P = any> {
   }
 
   _makePropsProxy(props: any): any {
-    // Можно и так передать this
-    // Такой способ больше не применяется с приходом ES6+
     const self = this;
 
     return new Proxy(props as unknown as object, {
@@ -148,8 +145,6 @@ export default class Block<P = any> {
       set(target: Record<string, unknown>, prop: string, value: unknown) {
         target[prop] = value;
 
-        // Запускаем обновление компоненты
-        // Плохой cloneDeep, в след итерации нужно заставлять добавлять cloneDeep им самим
         self.eventBus().emit(Block.EVENTS.FLOW_CDU, {...target}, target);
         return true;
       },

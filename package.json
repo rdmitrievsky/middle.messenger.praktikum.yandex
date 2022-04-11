@@ -15,9 +15,8 @@
     }
   },
   "scripts": {
-    "clear": "rmdir dist /s /q",
-    "start": "parcel src/index.html --no-source-maps --port 3000 --open",
-    "build": "parcel build src/index.html --no-minify"
+    "start": "parcel src/index.html --no-source-maps --port 3000 --open --no-cache",
+    "build": "parcel build src/index.html --no-minify --no-cache"
   },
   "repository": {
     "type": "git",
@@ -34,25 +33,25 @@
     "@parcel/packager-raw-url": "2.3.1",
     "@parcel/transformer-pug": "2.3.1",
     "@parcel/transformer-sass": "2.3.1",
-    "@types/node": "^17.0.23",
-    "@typescript-eslint/eslint-plugin": "^5.18.0",
-    "@typescript-eslint/parser": "^5.18.0",
-    "eslint": "^8.13.0",
+    "@types/node": "17.0.23",
+    "@typescript-eslint/eslint-plugin": "5.18.0",
+    "@typescript-eslint/parser": "5.18.0",
+    "eslint": "8.13.0",
     "parcel": "2.3.1",
-    "parcel-plugin-handlebars-precompile": "^1.0.2",
-    "postcss-import": "^12.0.1",
-    "stylelint": "^14.6.1",
-    "stylelint-config-standard": "^24.0.0",
-    "stylelint-config-standard-scss": "^3.0.0",
-    "typescript": "^4.6.3"
+    "parcel-plugin-handlebars-precompile": "1.0.2",
+    "postcss-import": "12.0.1",
+    "stylelint": "14.6.1",
+    "stylelint-config-standard": "24.0.0",
+    "stylelint-config-standard-scss": "3.0.0",
+    "typescript": "4.6.3"
   },
   "dependencies": {
-    "@anikin/parcel-transformer-handlebars": "^1.0.9",
+    "@anikin/parcel-transformer-handlebars": "1.0.9",
     "@parcel/config-default": "2.3.1",
-    "eslint-config-airbnb": "^19.0.4",
-    "express": "^4.17.2",
-    "nanoid": "^3.3.2",
-    "postcss-sass": "^0.5.0",
-    "stylelint-scss": "^4.2.0"
+    "eslint-config-airbnb": "19.0.4",
+    "express": "4.17.2",
+    "nanoid": "3.3.2",
+    "postcss-sass": "0.5.0",
+    "stylelint-scss": "4.2.0"
   }
 }

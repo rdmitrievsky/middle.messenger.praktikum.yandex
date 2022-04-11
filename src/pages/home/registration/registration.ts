@@ -47,8 +47,8 @@ export class Registration extends Block {
                 e.preventDefault()
             },
             singleValidate: (e: { target: HTMLInputElement }) => {
-                let tarfet = e.target
-                const values = {
+                const target = e.target
+                const values: Record<string, string> = {
                     email: (this.refs.email as HTMLInputElement).value,
                     login: (this.refs.login as HTMLInputElement).value,
                     firstname: (this.refs.firstname as HTMLInputElement).value,
@@ -57,7 +57,7 @@ export class Registration extends Block {
                     password: (this.refs.password as HTMLInputElement).value
                 }
                 const errors = { ...this.state.errors }
-                errors[tarfet.name] = validation(e.target.name, values[tarfet.name])
+                errors[target.name] = validation(target.name, values[target.name])
                 const nextState = {
                     errors: { ...errors },
                     values: { ...values },
@@ -67,7 +67,7 @@ export class Registration extends Block {
         }
     }
     render() {
-        let { values, errors } = this.state
+        const { values, errors } = this.state
         return `
         <div class="container">
             <form class="login login__form" id="qweq">

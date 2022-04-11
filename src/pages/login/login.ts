@@ -39,13 +39,13 @@ export class Tst extends Block {
                 e.preventDefault()
             },
             singleValidate: (e: { target: HTMLInputElement }) => {
-                const tarfet = e.target
-                const values = {
+                const target = e.target
+                const values: Record<string, string> = {
                     login: (this.refs.login as HTMLInputElement).value,
                     password: (this.refs.password as HTMLInputElement).value
                 }
                 const errors = { ...this.state.errors }
-                errors[tarfet.name] = validation(e.target.name, values[tarfet.name])
+                errors[target.name] = validation(target.name, values[target.name])
                 const nextState = {
                     errors: { ...errors },
                     values: { ...values },
@@ -81,7 +81,6 @@ export class Tst extends Block {
                         {{{Button text="Авторизоваться" type="prime" onClick=onValidate}}}
                         {{{Link href="/registration" type="second" classes="button button_second" childrenClass="button__text" text="Нет аккаунта?"}}}
                     </form>
-                    <a href="/chat">chat</a>
                 </div>
             </main>
         `

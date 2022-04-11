@@ -13,8 +13,8 @@ interface InputProps {
 }
 
 export class Input extends Block {
-    constructor({placeholder, name, classes, type, onChange, value, error}: InputProps) {
-      super({placeholder, name, classes, type, value, error, events: {blur: onChange}});
+    constructor({ onChange, ...props }: InputProps) {
+      super({ ...props, events: {blur: onChange}});
     }
   
     protected render(): string {

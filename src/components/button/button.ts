@@ -11,18 +11,14 @@ interface ButtonProps {
 
 export class Button extends Block {
   constructor({text, type, classes, onClick}: ButtonProps) {
-    // const onClick = (e: MouseEvent) => {
-    //   console.log('TADA');
-    //   e.preventDefault();
-    // }
     super({text, type, classes, events: {click: onClick}});
   }
   
   protected render(): string {
-    const qwe = this.props.classes ? this.props.classes : `button button_${this.props.type}`
+    const setClasses = this.props.classes ?? `button button_${this.props.type}`
     // language=hbs
     return `
-      <button href="#" class="${qwe}">
+      <button href="#" class="${setClasses}">
         <span class="button__text">{{text}}</span>
       </button>
     `;
