@@ -1,5 +1,5 @@
 import { Block, renderDOM, registerComponent }  from './core';
-import Tst from './pages/login';
+import Login from './pages/login';
 import Chat from './pages/chat';
 import { Account } from './pages/account/general';
 import { EditProfile } from './pages/account/editinfo/editprofile';
@@ -16,7 +16,7 @@ Object.values(components).forEach((component) => {
 
 document.addEventListener("DOMContentLoaded", () => {
     if (window.location.pathname === '/') {
-        renderDOM(Tst);
+        renderDOM(Login);
     } else if (window.location.pathname === '/chat') {
         renderDOM(Chat);
     } else if (window.location.pathname === '/profile') {

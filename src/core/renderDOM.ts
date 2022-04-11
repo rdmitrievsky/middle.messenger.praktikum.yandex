@@ -6,4 +6,6 @@ export default function renderDOM(BlockPage: typeof Block) {
   
   root!.innerHTML = '';
   root!.appendChild(block.getContent());
+  block.dispatchComponentDidMount();
+  return root;
 }

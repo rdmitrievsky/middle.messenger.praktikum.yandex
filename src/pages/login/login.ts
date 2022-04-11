@@ -3,7 +3,7 @@ import validation from "../../utils/inputsVerefications";
 import { renderDOM } from "../../core";
 import Chat from "../chat";
 
-export class Tst extends Block {
+export class Login extends Block {
     protected getStateFromProps() {
         this.state = {
             values: {
@@ -48,7 +48,7 @@ export class Tst extends Block {
                 errors[target.name] = validation(target.name, values[target.name])
                 const nextState = {
                     errors: { ...errors },
-                    values: { ...values },
+                    values: { ...values }
                 };
                 this.setState(nextState)
             }
@@ -61,10 +61,10 @@ export class Tst extends Block {
             <main>
                 <div class="container">
                     <form id="qweq" class="login login__form">
-                        <h3 class="login__form__label">Вход<h3>
+                        <h3 class="login__form__label">Вход</h3>
                         <div class="labels">
                             <label class="login__label">
-                                <span class="login__label__span">Логин</span>
+                                <span data-qwe="asd" class="login__label__span">Логин</span>
                                 {{{Input onChange=singleValidate classes="login__label__input" ref="login" name="login" type="text" value="${values.login}"}}}
                                 {{#if errors.login}}
                                     <span class="login__label__span_error">${errors.login}</span>
