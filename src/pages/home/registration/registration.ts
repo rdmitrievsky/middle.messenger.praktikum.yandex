@@ -42,6 +42,8 @@ export class Registration extends Block {
                     },
                     values: { ...values },
                 };
+                console.log(values)
+
                 this.setState(nextState)
 
                 e.preventDefault()
@@ -57,12 +59,8 @@ export class Registration extends Block {
                     password: (this.refs.password as HTMLInputElement).value
                 }
                 const errors = { ...this.state.errors }
-                errors[target.name] = validation(target.name, values[target.name])
-                const nextState = {
-                    errors: { ...errors },
-                    values: { ...values },
-                };
-                this.setState(nextState)
+                errors[target.name] = validation(target.name, values[target.name]);
+                (target.nextElementSibling as HTMLBodyElement).innerText = errors[target.name]
             }
         }
     }
@@ -70,50 +68,38 @@ export class Registration extends Block {
         const { values, errors } = this.state
         return `
         <div class="container">
-            <form class="login login__form" id="qweq">
+            <form class="login login__form">
                 <h3 class="login__form__label">Регистрация</h3>
                 <div class="labels">
                     <label class="login__label">
                         <span class="login__label__span">Почта</span>
                         {{{Input onChange=singleValidate classes="login__label__input" ref="email" name="email" type="text" value="${values.email}"}}}
-                        {{#if errors.email}}
-                            <span class="login__label__span_error">${errors.email}</span>
-                        {{/if}}
+                        <span class="login__label__span_error">${errors.email}</span>
                     </label>
                     <label class="login__label">
                         <span class="login__label__span">Логин</span>
                         {{{Input onChange=singleValidate classes="login__label__input" ref="login" name="login" type="text" value="${values.login}"}}}
-                        {{#if errors.login}}
-                            <span class="login__label__span_error">${errors.login}</span>
-                        {{/if}}
+                        <span class="login__label__span_error">${errors.login}</span>
                     </label>
                     <label class="login__label">
                         <span class="login__label__span">Имя</span>
                         {{{Input onChange=singleValidate classes="login__label__input" ref="firstname" name="firstname" type="text" value="${values.firstname}"}}}
-                        {{#if errors.firstname}}
-                            <span class="login__label__span_error">${errors.firstname}</span>
-                        {{/if}}
+                        <span class="login__label__span_error">${errors.firstname}</span>
                     </label>
                     <label class="login__label">
                         <span class="login__label__span">Фамилия</span>
                         {{{Input onChange=singleValidate classes="login__label__input" ref="secondname" name="secondname" type="text" value="${values.secondname}"}}}
-                        {{#if errors.secondname}}
-                            <span class="login__label__span_error">${errors.secondname}</span>
-                        {{/if}}
+                        <span class="login__label__span_error">${errors.secondname}</span>
                     </label>
                     <label class="login__label">
                         <span class="login__label__span">Телефон</span>
                         {{{Input onChange=singleValidate classes="login__label__input" ref="phone" name="phone" type="text" value="${values.phone}"}}}
-                        {{#if errors.phone}}
-                            <span class="login__label__span_error">${errors.phone}</span>
-                        {{/if}}
+                        <span class="login__label__span_error">${errors.phone}</span>
                     </label>
                     <label class="login__label">
                         <span class="login__label__span">Пароль</span>
-                        {{{Input onChange=singleValidate classes="login__label__input" ref="password" name="password" type="text" value="${values.password}"}}}
-                        {{#if errors.password}}
-                            <span class="login__label__span_error">${errors.password}</span>
-                        {{/if}}
+                        {{{Input onChange=singleValidate classes="login__label__input" ref="password" name="password" type="password" value="${values.password}"}}}
+                        <span class="login__label__span_error">${errors.password}</span>
                     </label>
                 </div>
                 {{{Button text="Зарегистрироваться" type="prime" onClick=onValidate}}}

@@ -83,5 +83,21 @@ export default function validation(type: string, inputValue: string): string {
 
     }
 
+    if (type === 'displayname') {
+
+        return ''
+
+    }
+
+    if (type === 'message') {
+
+        if (inputValue.length) {
+            return ''
+        } else {
+            return 'Поле не может быть пустым'
+        }
+
+    }
+
     return ''
 }

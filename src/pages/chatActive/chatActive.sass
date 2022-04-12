@@ -111,15 +111,41 @@
         font-family: 'Inter', sans-serif
         font-weight: 500
         color: #fff
+.login__label
+    width: 100%
 .display
+    width: 100%
+    height: auto
     display: flex
-    justify-content: center
+    justify-content: flex-start
     align-items: center
     box-sizing: border-box
-    flex: 1
     background-color: #fff
     border-left: 1px solid #efefef
-    &.row
-        flex-direction: row
-        justify-content: center
+    .chat-single-info
+        display: flex
+        justify-content: flex-start
         align-items: center
+        width: 95%
+        padding: 16px 0
+        border-bottom: 1px solid #efefef
+        .user__avatar
+            width: 34px
+            height: 34px
+            margin-right: 16px
+    .chat-table
+        height: 100%
+    >form
+        position: relative
+        padding: 16px 0 32px
+        border-top: 1px solid #efefef
+        display: flex
+        justify-content: space-between
+        align-items: center
+        width: 95%
+        .button
+            margin-left: 16px
+        .login__label__span_error
+            position: absolute
+            left: 5px
+            bottom: -5px

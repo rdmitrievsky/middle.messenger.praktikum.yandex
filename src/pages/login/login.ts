@@ -26,13 +26,16 @@ export class Login extends Block {
                     },
                     values: { ...values },
                 };
+
+                console.log(values)
+                
                 this.setState(nextState)
                 
-                const qwew: boolean = Object.values<string>(this.state.errors).some(i => {
+                const hasErrors: boolean = Object.values<string>(this.state.errors).some(i => {
                     return i.length > 0
                 })
 
-                if (!qwew) {
+                if (!hasErrors) {
                     renderDOM(Chat)
                 }
 
@@ -40,17 +43,15 @@ export class Login extends Block {
             },
             singleValidate: (e: { target: HTMLInputElement }) => {
                 const target = e.target
+                const currentError: string = (target.nextElementSibling as HTMLBodyElement).innerText
+                console.log(currentError)
                 const values: Record<string, string> = {
                     login: (this.refs.login as HTMLInputElement).value,
                     password: (this.refs.password as HTMLInputElement).value
                 }
                 const errors = { ...this.state.errors }
-                errors[target.name] = validation(target.name, values[target.name])
-                const nextState = {
-                    errors: { ...errors },
-                    values: { ...values }
-                };
-                this.setState(nextState)
+                errors[target.name] = validation(target.name, values[target.name]);
+                (target.nextElementSibling as HTMLBodyElement).innerText = errors[target.name]
             }
         }
     }
@@ -66,16 +67,12 @@ export class Login extends Block {
                             <label class="login__label">
                                 <span data-qwe="asd" class="login__label__span">Логин</span>
                                 {{{Input onChange=singleValidate classes="login__label__input" ref="login" name="login" type="text" value="${values.login}"}}}
-                                {{#if errors.login}}
-                                    <span class="login__label__span_error">${errors.login}</span>
-                                {{/if}}
+                                <span class="login__label__span_error">${errors.login}</span>
                             </label>
                             <label class="login__label">
                                 <span class="login__label__span">Пароль</span>
                                 {{{Input onChange=singleValidate classes="login__label__input" ref="password" name="password" type="password" value="${values.password}"}}}
-                                {{#if errors.password}}
-                                    <span class="login__label__span_error">${errors.password}</span>
-                                {{/if}}
+                                <span class="login__label__span_error">${errors.password}</span>
                             </label>
                         </div>
                         {{{Button text="Авторизоваться" type="prime" onClick=onValidate}}}

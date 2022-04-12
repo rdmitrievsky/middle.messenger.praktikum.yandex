@@ -3,15 +3,15 @@ import Block from '../../core/Block';
 import './button.sass';
 
 interface ButtonProps {
-  text: string;
+  text?: string;
   type: string;
   classes?: string;
   onClick: () => void;
 }
 
 export class Button extends Block {
-  constructor({text, type, classes, onClick}: ButtonProps) {
-    super({text, type, classes, events: {click: onClick}});
+  constructor({ onClick, ...props}: ButtonProps) {
+    super({ ...props, events: {click: onClick}});
   }
   
   protected render(): string {

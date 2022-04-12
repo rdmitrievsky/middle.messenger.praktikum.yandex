@@ -5,6 +5,7 @@ import { Account } from './pages/account/general';
 import { EditProfile } from './pages/account/editinfo/editprofile';
 import { EditPassword } from './pages/account/editpassword/editpassword';
 import { Registration } from './pages/home/registration/registration';
+import chatActive from './pages/chatActive';
 
 import './styles/general-style.sass'
 
@@ -27,5 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
         renderDOM(EditPassword);
     } else if (window.location.pathname === '/registration') {
         renderDOM(Registration);
+    } else if (window.location.pathname === '/chatActive') {
+        renderDOM(chatActive);
     }
 });
