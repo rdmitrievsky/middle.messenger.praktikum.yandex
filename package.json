@@ -15,7 +15,7 @@
     }
   },
   "scripts": {
-    "start": "parcel src/index.html --no-source-maps --port 3000 --open --no-cache",
+    "start": "parcel src/index.html --no-source-maps --port 3000 --open --no-cache && node app.js",
     "build": "parcel build src/index.html --no-minify --no-cache"
   },
   "repository": {
