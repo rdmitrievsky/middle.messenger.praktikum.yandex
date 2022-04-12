@@ -1,4 +1,4 @@
-import { Block, renderDOM, registerComponent }  from './core';
+import { renderDOM, registerComponent }  from './core';
 import Login from './pages/login';
 import Chat from './pages/chat';
 import { Account } from './pages/account/general';
@@ -7,13 +7,15 @@ import { EditPassword } from './pages/account/editpassword/editpassword';
 import { Registration } from './pages/home/registration/registration';
 import chatActive from './pages/chatActive';
 
+import button from './components/button';
+import input from './components/input';
+import link from './components/link';
+
 import './styles/general-style.sass'
 
-const components = require('./components/**/index.ts') as {[key: string]: { default: typeof Block }};
-
-Object.values(components).forEach((component) => {
-  registerComponent(component.default);
-});
+registerComponent(button)
+registerComponent(input)
+registerComponent(link)
 
 document.addEventListener("DOMContentLoaded", () => {
     if (window.location.pathname === '/') {
