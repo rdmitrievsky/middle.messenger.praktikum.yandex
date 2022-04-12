@@ -1,7 +1,7 @@
 import { Block } from "../../../core";
 import validation from "../../../utils/inputsVerefications";
 
-import './editinfo.sass'
+import './editinfo.scss'
 
 export class EditProfile extends Block {
     protected getStateFromProps() {

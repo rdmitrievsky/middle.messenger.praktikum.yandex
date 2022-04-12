@@ -1,6 +1,6 @@
 import { Block } from "../../core";
 
-import './input.sass'
+import './input.scss'
 
 interface InputProps {
     placeholder?: string;

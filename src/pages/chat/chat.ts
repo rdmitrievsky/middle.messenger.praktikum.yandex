@@ -1,6 +1,6 @@
 import { Block } from "../../core";
 
-import './chat.sass'
+import './chat.scss'
 
 export class Chat extends Block {
     render() {

@@ -1,7 +1,7 @@
 import { Block } from "../../../core";
 import validation from "../../../utils/inputsVerefications";
 
-import './editpassword.sass'
+import './editpassword.scss'
 
 export class EditPassword extends Block {
     protected getStateFromProps() {

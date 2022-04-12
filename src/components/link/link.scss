@@ -1,0 +1,31 @@
+@import "../../styles/variables";
+
+.button {
+  border: none;
+  outline: none;
+  padding: 12px 0;
+  text-decoration: none;
+  font-family: Inter, sans-serif;
+
+  &_prime {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: fit-content;
+    background-color: $primeBlue;
+    border-radius: 8px;
+
+    > span {
+      font-size: 13px;
+      color: #fff;
+    }
+  }
+
+  &_second {
+    background-color: transparent;
+    color: $primeBlue;
+    font-size: 11px;
+  }
+}

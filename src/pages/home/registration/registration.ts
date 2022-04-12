@@ -1,7 +1,7 @@
 import { Block } from "../../../core";
 import validation from "../../../utils/inputsVerefications";
 
-import './registration.sass'
+import './registration.scss'
 
 export class Registration extends Block {
     protected getStateFromProps() {

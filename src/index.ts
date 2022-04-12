@@ -11,7 +11,7 @@ import button from './components/button';
 import input from './components/input';
 import link from './components/link';
 
-import './styles/general-style.sass'
+import './styles/general-style.scss'
 
 registerComponent(button)
 registerComponent(input)

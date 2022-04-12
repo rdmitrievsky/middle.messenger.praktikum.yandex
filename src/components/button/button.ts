@@ -1,6 +1,6 @@
 import Block from '../../core/Block';
 
-import './button.sass';
+import './button.scss';
 
 interface ButtonProps {
   text?: string;

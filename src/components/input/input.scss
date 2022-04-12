@@ -1,0 +1,24 @@
+@import "../../styles/variables";
+
+.login__label__input {
+  padding: 6px 0;
+  border: none;
+  border-bottom: 1px solid $primeBlue;
+
+  &:last-child {
+    margin-bottom: 32px;
+  }
+
+  &:focus-visible {
+    outline: none;
+  }
+
+  &.input-message-send {
+    box-sizing: border-box;
+    padding: 10px 20px;
+    width: 100%;
+    background-color: #efefef;
+    border: none;
+    border-radius: 30px;
+  }
+}

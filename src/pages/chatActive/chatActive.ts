@@ -1,7 +1,7 @@
 import { Block } from "../../core";
 import validation from "../../utils/inputsVerefications";
 
-import './chatActive.sass'
+import './chatActive.scss'
 
 export class chatActive extends Block {
     protected getStateFromProps() {

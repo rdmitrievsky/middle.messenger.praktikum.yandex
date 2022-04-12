@@ -1,6 +1,6 @@
 import Block from '../../core/Block';
 
-import './link.sass';
+import './link.scss';
 
 interface LinkProps {
   text: string;
