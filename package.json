@@ -37,7 +37,7 @@
     "@typescript-eslint/parser": "5.18.0",
     "eslint": "8.13.0",
     "minimist": "1.2.6",
-    "parcel": "^2.3.1",
+    "parcel": "2.3.1",
     "parcel-plugin-handlebars-precompile": "1.0.2",
     "postcss-import": "12.0.1",
     "stylelint": "14.6.1",
@@ -47,14 +47,14 @@
   },
   "dependencies": {
     "@anikin/parcel-transformer-handlebars": "1.0.9",
-    "@parcel/config-default": "^2.3.1",
-    "@parcel/transformer-typescript-tsc": "^2.4.1",
+    "@parcel/config-default": "2.3.1",
+    "@parcel/transformer-typescript-tsc": "2.4.1",
     "eslint-config-airbnb": "19.0.4",
     "express": "4.17.2",
     "handlebars": "4.7.7",
     "nanoid": "3.3.2",
     "postcss-sass": "0.5.0",
-    "postcss-scss": "^4.0.3",
+    "postcss-scss": "4.0.3",
     "stylelint-scss": "4.2.0"
   }
 }
