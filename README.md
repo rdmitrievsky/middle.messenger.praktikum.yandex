@@ -3,10 +3,9 @@ https://www.figma.com/file/24EUnEHGEDNLdOcxg7ULwV/Chat?node-id=0%3A1
 
 pr
 https://github.com/rdmitrievsky/middle.messenger.praktikum.yandex/pull/2
-пулл реквест не прошёл все проверки, выкидывает ошибку node tests-second-floor/sprint_1/check_routing.js. Не смог разобраться, а вермя не осталась =(
 
-ссылка на netlify
-https://musing-feynman-6ad990.netlify.app/
+ссылка на netlify 2ого спринта 
+https://poetic-bavarois-a0a10f.netlify.app/
 
-- `npm start` — запуск версии для разработчика,
+- `npm start` — запуск версии на 300 порту,
 - `npm run build` — сборка стабильной версии.
