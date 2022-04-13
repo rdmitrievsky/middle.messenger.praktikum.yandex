@@ -16,6 +16,7 @@ export class Input extends Block {
     constructor({ onChange, ...props }: InputProps) {
       super({ ...props, events: {focus: onChange, blur: onChange}});
     }
+    static componentName = 'Input'
   
     protected render(): string {
       // language=hbs

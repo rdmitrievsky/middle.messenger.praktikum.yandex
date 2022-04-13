@@ -14,6 +14,7 @@ export class Link extends Block {
   constructor({text, type, href, classes, childrenClass}: LinkProps) {
     super({text, type, href, classes, childrenClass});
   }
+  static componentName = 'Link'
 
   protected render(): string {
     // language=hbs

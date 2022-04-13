@@ -13,6 +13,7 @@ export class Button extends Block {
   constructor({ onClick, ...props}: ButtonProps) {
     super({ ...props, events: {click: onClick}});
   }
+  static componentName = 'Button'
   
   protected render(): string {
     const setClasses = this.props.classes ?? `button button_${this.props.type}`

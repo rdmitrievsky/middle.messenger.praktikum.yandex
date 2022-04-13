@@ -13,9 +13,11 @@
       }
     }
   },
+  "source": "static/index.html",
   "scripts": {
-    "start": "parcel src/index.html --port 3000",
-    "build": "parcel build src/index.html"
+    "dev": "parcel --port 3030",
+    "start": "npm run build && node server.js",
+    "build": "parcel build"
   },
   "repository": {
     "type": "git",
