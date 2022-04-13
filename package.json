@@ -13,9 +13,11 @@
       }
     }
   },
+  "source": "static/index.html",
   "scripts": {
-    "start": "parcel src/index.html --port 3000",
-    "build": "parcel build src/index.html"
+    "dev": "parcel --port 3030",
+    "start": "npm run build && node server.js",
+    "build": "parcel build"
   },
   "repository": {
     "type": "git",
@@ -37,7 +39,7 @@
     "@typescript-eslint/parser": "5.18.0",
     "eslint": "8.13.0",
     "minimist": "1.2.6",
-    "parcel": "2.3.1",
+    "parcel": "2.4.1",
     "parcel-plugin-handlebars-precompile": "1.0.2",
     "postcss-import": "12.0.1",
     "stylelint": "14.6.1",

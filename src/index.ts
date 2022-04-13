@@ -6,12 +6,12 @@ import { EditProfile } from './pages/account/editinfo/editprofile';
 import { EditPassword } from './pages/account/editpassword/editpassword';
 import { Registration } from './pages/home/registration/registration';
 import chatActive from './pages/chatActive';
+import './styles/general-style.scss'
 
 import button from './components/button';
 import input from './components/input';
 import link from './components/link';
 
-import './styles/general-style.scss'
 
 registerComponent(button)
 registerComponent(input)
