@@ -24,7 +24,7 @@ export class AccountGen extends Block {
         return true;
     }
     render() {
-        const { display_name, first_name, second_name, email, phone, login } = this.props.user && this.props.user
+        const { avatar, display_name, first_name, second_name, email, phone, login } = this.props.user || {}
         // language=hbs
         return `
         <div class="container container_flex">
@@ -34,7 +34,7 @@ export class AccountGen extends Block {
             <div class="display">
                 <section class="name-avatar">
                     <button id="changeAvatar">
-                        <img src="/48b5acb1-f17f-4b07-9bfa-5b444f6df519/a4a307ed-ca2c-42e6-a00e-b1efe8a2ee49_Winniethepooh.png">
+                        <img src="${avatar ?? ''}">
                     </button>
                     <span>${display_name ?? first_name}</span>
                 </section>

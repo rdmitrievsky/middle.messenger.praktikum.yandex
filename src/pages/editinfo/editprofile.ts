@@ -1,5 +1,5 @@
-import { Block } from "../../../core";
-import validation from "../../../utils/inputsVerefications";
+import { Block } from "../../core";
+import validation from "../../utils/inputsVerefications";
 
 import './editinfo.scss'
 
@@ -66,8 +66,21 @@ export class EditProfile extends Block {
             }
         }
     }
+    componentDidMount() {
+        console.log(this.props.user)
+        if (!this.props.user) {
+            this.props.router.go('/');
+        }
+    }
+    componentDidUpdate() {
+        if (!this.props.user) {
+            this.props.router.go('/');
+        }
+        return true;
+    }
     render() {
         const { values, errors } = this.state
+        const { avatar, display_name, first_name, second_name, email, phone, login } = this.props.user || {}
         return `
             <div class="container container_flex">
                 <a class="button" href="/profile">
@@ -75,36 +88,36 @@ export class EditProfile extends Block {
                 </a>
                 <div class="display">
                     <section class="name-avatar">
-                        <div></div>
+                        <div><img src="${avatar}"></div>
                     </section>
                     <section class="user-info">
                         <label>
                             <span>Почта</span>
-                            {{{Input onChange=singleValidate value="${values.email}" ref="email" type="text" placeholder="pochta@yandex.ru" name="email"}}}
+                            {{{Input onChange=singleValidate value="${email}" ref="email" type="text" placeholder="pochta@yandex.ru" name="email"}}}
                             <span class="login__label__span_error">${errors.email}</span>
                         </label>
                         <label>
                             <span>Логин</span>
-                            {{{Input onChange=singleValidate value="${values.login}" ref="login" type="text" placeholder="ivanivanov" name="login"}}}
+                            {{{Input onChange=singleValidate value="${login}" ref="login" type="text" placeholder="ivanivanov" name="login"}}}
                             <span class="login__label__span_error">${errors.login}</span>
                         </label>
                         <label>
                             <span>Имя</span>
-                            {{{Input onChange=singleValidate value="${values.firstname}" ref="firstname" type="text" placeholder="Иван" name="firstname"}}}
+                            {{{Input onChange=singleValidate value="${first_name}" ref="firstname" type="text" placeholder="Иван" name="firstname"}}}
                             <span class="login__label__span_error">${errors.firstname}</span>
                         </label>
                         <label>
                             <span>Фамилия</span>
-                            {{{Input onChange=singleValidate value="${values.secondname}" ref="secondname" type="text" placeholder="Иванов" name="secondname"}}}
+                            {{{Input onChange=singleValidate value="${second_name}" ref="secondname" type="text" placeholder="Иванов" name="secondname"}}}
                             <span class="login__label__span_error">${errors.secondname}</span>
                         </label>
                         <label>
                             <span>Имя в чате</span>
-                            {{{Input value="${values.displayname}" ref="displayname" type="text" placeholder="Иван" name="displayname"}}}
+                            {{{Input value="${display_name}" ref="displayname" type="text" placeholder="Иван" name="displayname"}}}
                         </label>
                         <label>
                             <span>Телефон</span>
-                            {{{Input onChange=singleValidate value="${values.phone}" ref="phone" type="text" placeholder="+7 (909) 967 30 30" name="phone"}}}
+                            {{{Input onChange=singleValidate value="${phone}" ref="phone" type="text" placeholder="+7 (909) 967 30 30" name="phone"}}}
                             <span class="login__label__span_error">${errors.phone}</span>
                         </label>
                     </section>

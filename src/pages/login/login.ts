@@ -16,6 +16,7 @@ export class Login extends Block {
                 password: '',
             },
             onValidate: async (e: MouseEvent) => {
+                e.preventDefault()
                 const values = {
                     login: (this.refs.login as HTMLInputElement).value,
                     password: (this.refs.password as HTMLInputElement).value
@@ -27,8 +28,6 @@ export class Login extends Block {
                     },
                     values: { ...values },
                 };
-
-                console.log(values)
                 
                 this.setState(nextState)
                 
@@ -38,10 +37,9 @@ export class Login extends Block {
 
                 if (!hasErrors) {
                     // renderDOM(Chat)
+                    console.log(values)
                     await AuthController.login(values)
                 }
-
-                e.preventDefault()
             },
             singleValidate: (e: { target: HTMLInputElement }) => {
                 const target = e.target
@@ -59,11 +57,15 @@ export class Login extends Block {
     }
 
     componentDidMount() {
-        console.log('this.props.user')
-        console.log(this.props.user)
         if (this.props.user.profile) {
             this.props.router.go('/chat')
         }
+    }
+    componentDidUpdate() {
+        if (this.props.user.profile) {
+            this.props.router.go('/chat')
+        }
+        return true
     }
 
     render() {

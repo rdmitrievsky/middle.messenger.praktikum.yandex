@@ -4,7 +4,7 @@ import Router from './core/Router';
 import Login from './pages/login';
 import Chat from './pages/chat';
 import AccountGen from './pages/general';
-import { EditProfile } from './pages/account/editinfo/editprofile';
+import EditProfile from './pages/editinfo';
 import { EditPassword } from './pages/account/editpassword/editpassword';
 import { Registration } from './pages/home/registration/registration';
 import chatActive from './pages/chatActive';
@@ -27,6 +27,7 @@ AuthController.fetchUser()
         .use('/', Login)
         .use('/chat', Chat)
         .use('/profile', AccountGen)
+        .use('/editprofile', EditProfile)
         .start()
     });
 
