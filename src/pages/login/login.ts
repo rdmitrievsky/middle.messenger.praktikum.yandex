@@ -2,6 +2,7 @@ import { Block } from "../../core";
 import validation from "../../utils/inputsVerefications";
 import { renderDOM } from "../../core";
 import Chat from "../chat";
+import AuthController from "../../core/AuthController";
 
 export class Login extends Block {
     protected getStateFromProps() {
@@ -14,7 +15,7 @@ export class Login extends Block {
                 login: '',
                 password: '',
             },
-            onValidate: (e: MouseEvent) => {
+            onValidate: async (e: MouseEvent) => {
                 const values = {
                     login: (this.refs.login as HTMLInputElement).value,
                     password: (this.refs.password as HTMLInputElement).value
@@ -36,7 +37,8 @@ export class Login extends Block {
                 })
 
                 if (!hasErrors) {
-                    renderDOM(Chat)
+                    // renderDOM(Chat)
+                    await AuthController.login(values)
                 }
 
                 e.preventDefault()
@@ -55,6 +57,15 @@ export class Login extends Block {
             }
         }
     }
+
+    componentDidMount() {
+        console.log('this.props.user')
+        console.log(this.props.user)
+        if (this.props.user.profile) {
+            this.props.router.go('/chat')
+        }
+    }
+
     render() {
         const { values, errors } = this.state
         // language=hbs
