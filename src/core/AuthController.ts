@@ -1,21 +1,35 @@
 import { AuthAPI, LoginData, SignupData, UserData } from '../api/AuthAPI';
 import { ChatAPI, ChatsData } from '../api/ChatAPI';
+import { EditUser, UserEditData } from '../api/EditUser'
 import { store } from '../store';
 import { deleteUser, setUser, setError } from '../store/user';
 
 class AuthController {
     private api: AuthAPI;
     private apiChat: ChatAPI;
+    private editApi: EditUser
 
     constructor() {
         this.api = new AuthAPI()
         this.apiChat = new ChatAPI()
+        this.editApi = new EditUser()
     }
 
     async getChats(): Promise<ChatsData[] | void> {
         try {
             const user = await this.apiChat.readChats();
             return user;
+        } catch (e) {
+            console.log(e)
+        }
+    }
+
+    async editUserInfo(data: UserEditData) {
+        try {
+            console.log(data)
+            await this.editApi.editUserInfo(data);
+            await this.fetchUser();
+            return true
         } catch (e) {
             console.log(e)
         }
