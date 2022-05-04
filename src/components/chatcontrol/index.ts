@@ -1,0 +1,1 @@
+export { ChatControl as default } from './chatcontrol';

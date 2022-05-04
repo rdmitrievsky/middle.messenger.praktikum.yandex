@@ -7,17 +7,19 @@ import AccountGen from './pages/general';
 import EditProfile from './pages/editinfo';
 import { EditPassword } from './pages/account/editpassword/editpassword';
 import { Registration } from './pages/home/registration/registration';
-import chatActive from './pages/chatActive';
 import './styles/general-style.scss'
 
 import button from './components/button';
 import input from './components/input';
 import link from './components/link';
-
+import chatcontrol from './components/chatcontrol'
+import chatcontrolmodal from './components/chatcontrolmodal'
 
 registerComponent(button)
 registerComponent(input)
 registerComponent(link)
+registerComponent(chatcontrol)
+registerComponent(chatcontrolmodal)
 
 AuthController.fetchUser()
     .then(() => {

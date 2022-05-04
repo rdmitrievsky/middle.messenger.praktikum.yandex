@@ -1,4 +1,5 @@
 import Block from './Block'
+import chatActive from '../pages/chatActive';
 
 class Route {
     private _pathname: string;
@@ -11,6 +12,9 @@ class Route {
         this._blockClass = view;
         this._block = null;
         this._props = props;
+    }
+    setView(newView: typeof Block) {
+        this._blockClass = newView
     }
     navigate(pathname: string) {
         if (this.match(pathname)) {
@@ -27,7 +31,7 @@ class Route {
         return pathname === this._pathname;
     }
     render() {
-        console.log(new this._blockClass().getContent())
+        // console.log(new this._blockClass().getContent())
         // if (!this._block) {
         //     this._block = new this._blockClass();
         //     const root = document.querySelector(this._props.rootQuery);
@@ -66,11 +70,11 @@ class Router {
     }
     start() {
         window.onpopstate = () => {
-            this._onRoute(window.location.pathname);
+            this._onRoute(window.location.pathname, window.location.search);
         };
-        this._onRoute(window.location.pathname);
+        this._onRoute(window.location.pathname, window.location.search);
     }
-    _onRoute(pathname: string) {
+    _onRoute(pathname: string, search? :string | null) {
         const route = this.getRoute(pathname);
         if (!route) {
             return;
@@ -79,7 +83,17 @@ class Router {
             this._currentRoute.leave();
         }
         this._currentRoute = route
-        route.render();
+        
+        if (search) {
+            const searches = search.split('=')
+            window.testVariable = searches[1]
+            route.setView(chatActive)
+            route.render();
+        } else {
+            console.log('MEH')
+            route.render();
+        }
+        
     }
     go(pathname: string) {
         this.history.pushState({}, "", pathname);

@@ -16,6 +16,11 @@ export class Chat extends Block {
             console.log(newstate.inputs)
             this.setState(newstate)
         })
+        this.state = {
+            getID: () => {
+                console.log(this.state)
+            }
+        }
     }
     componentDidMount() {
         // let ppl = await AuthController.getChats()
@@ -32,7 +37,7 @@ export class Chat extends Block {
                 <label class="users__search"><input type="text" name="user-search"><span>Поиск</span></label>
                 <div class="users__wrapper">
                     {{#each inputs}}
-                        <a class="user" href="/chatActive">
+                        <a class="user" href="/chat?id={{this.id}}">
                             <div class="user__avatar"></div>
                             <div class="user__info">
                                 <div class="user__info__name"><span>{{this.title}}</span></div>

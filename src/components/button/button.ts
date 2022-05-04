@@ -19,7 +19,7 @@ export class Button extends Block {
     const setClasses = this.props.classes ?? `button button_${this.props.type}`
     // language=hbs
     return `
-      <button href="#" class="${setClasses}">
+      <button class="${setClasses}">
         <span class="button__text">{{text}}</span>
       </button>
     `;
