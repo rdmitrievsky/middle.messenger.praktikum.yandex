@@ -1,5 +1,6 @@
-import { Block } from "../../../core";
-import validation from "../../../utils/inputsVerefications";
+import { Block } from "../../core";
+import validation from "../../utils/inputsVerefications";
+import AuthController from "../../core/AuthController";
 
 import './registration.scss'
 
@@ -63,6 +64,17 @@ export class Registration extends Block {
                 (target.nextElementSibling as HTMLBodyElement).innerText = errors[target.name]
             }
         }
+    }
+    componentDidMount() {
+        if (this.props.user.profile) {
+            this.props.router.go('/chat')
+        }
+    }
+    componentDidUpdate() {
+        if (this.props.user.profile) {
+            this.props.router.go('/chat')
+        }
+        return true
     }
     render() {
         const { values, errors } = this.state

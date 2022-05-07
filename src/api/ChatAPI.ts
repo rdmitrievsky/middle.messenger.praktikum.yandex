@@ -27,4 +27,7 @@ export class ChatAPI extends BaseAPI {
     readChats(): Promise<ChatsData[]> {
         return this.http.get()
     }
+    createChat(data: string): Promise<string> {
+        return this.http.post('/', {title: data})
+    }
 }

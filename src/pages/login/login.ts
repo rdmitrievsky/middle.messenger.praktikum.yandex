@@ -1,7 +1,5 @@
 import { Block } from "../../core";
 import validation from "../../utils/inputsVerefications";
-import { renderDOM } from "../../core";
-import Chat from "../chat";
 import AuthController from "../../core/AuthController";
 
 export class Login extends Block {

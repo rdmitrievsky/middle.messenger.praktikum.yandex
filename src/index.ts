@@ -5,8 +5,8 @@ import Login from './pages/login';
 import Chat from './pages/chat';
 import AccountGen from './pages/general';
 import EditProfile from './pages/editinfo';
+import Registration from './pages/registration'
 import { EditPassword } from './pages/account/editpassword/editpassword';
-import { Registration } from './pages/home/registration/registration';
 import './styles/general-style.scss'
 
 import button from './components/button';
@@ -27,6 +27,7 @@ AuthController.fetchUser()
 
     router
         .use('/', Login)
+        .use('/registration', Registration)
         .use('/chat', Chat)
         .use('/profile', AccountGen)
         .use('/editprofile', EditProfile)

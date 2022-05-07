@@ -4,7 +4,7 @@ import AuthController from "../../core/AuthController";
 import './chat.scss'
 
 export class Chat extends Block {
-    protected getStateFromProps() {
+    setupChats() {
         let chats = AuthController.getChats()
         chats.then(chat => {
             const newstate = {
@@ -16,9 +16,22 @@ export class Chat extends Block {
             console.log(newstate.inputs)
             this.setState(newstate)
         })
+    }
+    protected getStateFromProps() {
+        this.setupChats()
         this.state = {
             getID: () => {
                 console.log(this.state)
+            },
+            createNewChat: () => {
+                const data = (this.refs.createChat as HTMLInputElement).value
+                const addNewChat = AuthController.createChat(data)
+                addNewChat.then(status => {
+                    if (!status) {
+                        return
+                    }
+                    this.setupChats()
+                })
             }
         }
     }
@@ -35,6 +48,11 @@ export class Chat extends Block {
                     {{{Link text="Профиль" classes="users__control" href="/profile"}}}
                 </div>
                 <label class="users__search"><input type="text" name="user-search"><span>Поиск</span></label>
+                <label>
+                    <div>+</div>
+                    {{{Input ref="createChat" type="text" name="create-chat"}}}
+                    {{{Button onClick=createNewChat type="prime" text="qweqwe"}}}
+                </label>
                 <div class="users__wrapper">
                     {{#each inputs}}
                         <a class="user" href="/chat?id={{this.id}}">

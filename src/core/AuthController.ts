@@ -24,6 +24,15 @@ class AuthController {
         }
     }
 
+    async createChat(data: string) {
+        try {
+            await this.apiChat.createChat(data);
+            return true;
+        } catch (e) {
+            console.log(e)
+        }
+    }
+
     async editUserInfo(data: UserEditData) {
         try {
             console.log(data)
