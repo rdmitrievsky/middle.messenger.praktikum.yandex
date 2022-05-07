@@ -21,7 +21,8 @@ export class AuthAPI extends BaseAPI {
         super('/auth');
     }
 
-    signup(data: SignupData): Promise<{ id: number }> {
+    signup(data: SignupData): Promise<void> {
+        console.log(data)
         return this.http.post('/signup', data);
     }
 

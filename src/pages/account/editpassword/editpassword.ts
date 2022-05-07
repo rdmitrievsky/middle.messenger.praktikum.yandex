@@ -30,7 +30,6 @@ export class EditPassword extends Block {
                     },
                     values: { ...values },
                 };
-                console.log(values)
 
                 this.setState(nextState)
 

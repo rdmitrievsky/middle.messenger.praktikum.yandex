@@ -35,14 +35,12 @@ export class Login extends Block {
 
                 if (!hasErrors) {
                     // renderDOM(Chat)
-                    console.log(values)
                     await AuthController.login(values)
                 }
             },
             singleValidate: (e: { target: HTMLInputElement }) => {
                 const target = e.target
                 const currentError: string = (target.nextElementSibling as HTMLBodyElement).innerText
-                console.log(currentError)
                 const values: Record<string, string> = {
                     login: (this.refs.login as HTMLInputElement).value,
                     password: (this.refs.password as HTMLInputElement).value

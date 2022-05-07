@@ -74,7 +74,7 @@ export default class Block<P = any> {
     });
   }
   //eslint-disable-next-line
-  componentDidMount(props: P) {console.log("DID MOUNT")}
+  componentDidMount(props: P) {}
 
   dispatchComponentDidMount() {
     this.eventBus().emit(Block.EVENTS.FLOW_CDM);

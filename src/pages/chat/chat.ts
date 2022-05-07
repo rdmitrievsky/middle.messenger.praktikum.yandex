@@ -6,14 +6,16 @@ import './chat.scss'
 export class Chat extends Block {
     setupChats() {
         let chats = AuthController.getChats()
+        chats.catch(q => console.log(q))
         chats.then(chat => {
             const newstate = {
                 inputs: []
             }
-            chat.forEach(element => {
-                newstate.inputs.push(element)
-            });
-            console.log(newstate.inputs)
+            if (chat) {
+                chat.forEach(element => {
+                    newstate.inputs.push(element)
+                });
+            }
             this.setState(newstate)
         })
     }
@@ -36,7 +38,16 @@ export class Chat extends Block {
         }
     }
     componentDidMount() {
-        // let ppl = await AuthController.getChats()
+        console.log(this.props.user)
+        if (!this.props.user) {
+            this.props.router.go('/')
+        }
+    }
+    componentDidUpdate() {
+        if (!this.props.user) {
+            this.props.router.go('/')
+        }
+        return true
     }
     render() {
         // language=hbs

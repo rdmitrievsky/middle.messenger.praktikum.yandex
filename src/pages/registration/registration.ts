@@ -10,25 +10,27 @@ export class Registration extends Block {
             values: {
                 email: '',
                 login: '',
-                firstname: '',
-                secondname: '',
+                first_name: '',
+                second_name: '',
                 phone: '',
                 password: '',
             },
             errors: {
                 email: '',
                 login: '',
-                firstname: '',
-                secondname: '',
+                first_name: '',
+                second_name: '',
                 phone: '',
                 password: '',
             },
-            onValidate: (e: MouseEvent) => {
+            onValidate: async (e: MouseEvent) => {
+                e.preventDefault()
+
                 const values = {
                     email: (this.refs.email as HTMLInputElement).value,
                     login: (this.refs.login as HTMLInputElement).value,
-                    firstname: (this.refs.firstname as HTMLInputElement).value,
-                    secondname: (this.refs.secondname as HTMLInputElement).value,
+                    first_name: (this.refs.firstname as HTMLInputElement).value,
+                    second_name: (this.refs.secondname as HTMLInputElement).value,
                     phone: (this.refs.phone as HTMLInputElement).value,
                     password: (this.refs.password as HTMLInputElement).value
                 }
@@ -36,26 +38,31 @@ export class Registration extends Block {
                     errors: {
                         email: validation('email', values.email),
                         login: validation('login', values.login),
-                        firstname: validation('firstname', values.firstname),
-                        secondname: validation('secondname', values.secondname),
+                        first_name: validation('firstname', values.first_name),
+                        second_name: validation('secondname', values.second_name),
                         phone: validation('phone', values.phone),
                         password: validation('password', values.password),
                     },
                     values: { ...values },
                 };
-                console.log(values)
 
-                this.setState(nextState)
+                const hasErrorsPre: boolean = Object.values<string>(nextState.errors).some(i => {
+                    return i.length > 0
+                })
 
-                e.preventDefault()
+                if (hasErrorsPre) {
+                    this.setState(nextState)
+                } else {
+                    await AuthController.signup(nextState.values)
+                }
             },
             singleValidate: (e: { target: HTMLInputElement }) => {
                 const target = e.target
                 const values: Record<string, string> = {
                     email: (this.refs.email as HTMLInputElement).value,
                     login: (this.refs.login as HTMLInputElement).value,
-                    firstname: (this.refs.firstname as HTMLInputElement).value,
-                    secondname: (this.refs.secondname as HTMLInputElement).value,
+                    first_name: (this.refs.firstname as HTMLInputElement).value,
+                    second_name: (this.refs.secondname as HTMLInputElement).value,
                     phone: (this.refs.phone as HTMLInputElement).value,
                     password: (this.refs.password as HTMLInputElement).value
                 }
@@ -66,16 +73,17 @@ export class Registration extends Block {
         }
     }
     componentDidMount() {
-        if (this.props.user.profile) {
-            this.props.router.go('/chat')
-        }
+        console.log(this.props.user)
+        // if (this.props.user.profile) {
+        //     this.props.router.go('/chat')
+        // }
     }
-    componentDidUpdate() {
-        if (this.props.user.profile) {
-            this.props.router.go('/chat')
-        }
-        return true
-    }
+    // componentDidUpdate() {
+    //     if (this.props.user.profile) {
+    //         this.props.router.go('/chat')
+    //     }
+    //     return true
+    // }
     render() {
         const { values, errors } = this.state
         return `
@@ -95,13 +103,13 @@ export class Registration extends Block {
                     </label>
                     <label class="login__label">
                         <span class="login__label__span">Имя</span>
-                        {{{Input onChange=singleValidate classes="login__label__input" ref="firstname" name="firstname" type="text" value="${values.firstname}"}}}
-                        <span class="login__label__span_error">${errors.firstname}</span>
+                        {{{Input onChange=singleValidate classes="login__label__input" ref="firstname" name="first_name" type="text" value="${values.first_name}"}}}
+                        <span class="login__label__span_error">${errors.first_name}</span>
                     </label>
                     <label class="login__label">
                         <span class="login__label__span">Фамилия</span>
-                        {{{Input onChange=singleValidate classes="login__label__input" ref="secondname" name="secondname" type="text" value="${values.secondname}"}}}
-                        <span class="login__label__span_error">${errors.secondname}</span>
+                        {{{Input onChange=singleValidate classes="login__label__input" ref="secondname" name="second_name" type="text" value="${values.second_name}"}}}
+                        <span class="login__label__span_error">${errors.second_name}</span>
                     </label>
                     <label class="login__label">
                         <span class="login__label__span">Телефон</span>

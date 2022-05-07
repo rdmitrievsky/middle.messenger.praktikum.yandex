@@ -24,7 +24,6 @@ export class Store extends EventBus {
         this.emit('changed');
     }
     getState() {
-        console.log('getState')
         return this.state;
     }
     combineReducers(reducers: Indexed): Reducer {

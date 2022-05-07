@@ -31,7 +31,6 @@ class Route {
         return pathname === this._pathname;
     }
     render() {
-        // console.log(new this._blockClass().getContent())
         // if (!this._block) {
         //     this._block = new this._blockClass();
         //     const root = document.querySelector(this._props.rootQuery);
@@ -90,7 +89,6 @@ class Router {
             route.setView(chatActive)
             route.render();
         } else {
-            console.log('MEH')
             route.render();
         }
         
@@ -115,7 +113,6 @@ export default Router
 export function withRouter(Component: typeof Block) {
     return class WithRouter extends Component {
         constructor(props: any) {
-            console.log('props123')
             const router = new Router()
             super({...props, router: router})
         }

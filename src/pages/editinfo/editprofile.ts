@@ -93,7 +93,6 @@ export class EditProfile extends Block {
         }
     }
     componentDidMount() {
-        console.log(this.props.user)
         if (!this.props.user) {
             this.props.router.go('/');
         }

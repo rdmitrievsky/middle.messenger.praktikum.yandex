@@ -35,7 +35,6 @@ class AuthController {
 
     async editUserInfo(data: UserEditData) {
         try {
-            console.log(data)
             await this.editApi.editUserInfo(data);
             await this.fetchUser();
             return true
@@ -46,8 +45,10 @@ class AuthController {
 
     async signup(data: SignupData) {
         try {
+            console.log('qwe')
             await this.api.signup(data);
-            await this.fetchUser();
+            return true
+            // await this.fetchUser();
         } catch (e) {
             store.dispatch(setError(e as { reason: string }));
         }
@@ -57,8 +58,6 @@ class AuthController {
         try {
             await this.api.login(data);
             await this.fetchUser();
-            // console.log('data')
-            // console.log(data)
         } catch (e) {
             console.log(e)
             store.dispatch(setError(e as { reason: string }));
@@ -80,8 +79,6 @@ class AuthController {
             const user = await this.api.read();
 
             store.dispatch(setUser(user));
-            // console.log('user')
-            // console.log(user)
             return user;
         } catch (e) {
             store.dispatch(deleteUser());
