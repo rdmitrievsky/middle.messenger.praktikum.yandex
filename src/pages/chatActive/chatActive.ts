@@ -32,10 +32,10 @@ export class chatActive extends Block {
                 message: ''
             },
             qwe: () => {
-                const modal = document.querySelector('modal')
-                modal?.classList.add('chatcontrolmodal_visble')
+                // const modal = document.querySelector('modal')
+                // modal?.classList.add('chatcontrolmodal_visble')
                 // this.state.modalIsUp = true
-                console.log(this.state.modalIsUp)
+                this.state.modalIsUp = true
             },
             onValidate: (e: MouseEvent) => {
                 const values = {
@@ -48,16 +48,13 @@ export class chatActive extends Block {
                     values: { ...values },
                 };
 
-                console.log(values)
-                
                 this.setState(nextState)
 
                 e.preventDefault()
             },
             singleValidate: (e: { target: HTMLInputElement }) => {
                 const target = e.target
-                const currentError: string = (target.nextElementSibling as HTMLBodyElement).innerText
-                console.log(currentError)
+                // const currentError: string = (target.nextElementSibling as HTMLBodyElement).innerText
                 const values: Record<string, string> = {
                     message: (this.refs.message as HTMLInputElement).value
                 }
@@ -68,12 +65,11 @@ export class chatActive extends Block {
         }
     }
     render() {
-        console.log(this.props)
-        const { modalIsUp, values, errors } = this.state
+        const { modalIsUp, values, errors, currentChat } = this.state || {}
         // language=hbs
         return `
         <div class="container container_flex container__chat">
-            {{{ChatControlModal classes="${modalIsUp ? 'asdasd' : 'zxczxc'}"}}}
+            {{{ChatControlModal chatId="${currentChat ? currentChat.id : undefined}" ref="asddfg" classes="${modalIsUp ? 'chatcontrolmodal_visble' : ''}"}}}
             <div class="users">
                 <div class="users__user-info">
                     <div>${this.props.user ? this.props.user.display_name ?? this.props.user.first_name : null}</div>

@@ -30,4 +30,7 @@ export class ChatAPI extends BaseAPI {
     createChat(data: string): Promise<string> {
         return this.http.post('/', {title: data})
     }
+    getChatUsers(id: number) {
+        return this.http.get(`/${id}/users`)
+    }
 }

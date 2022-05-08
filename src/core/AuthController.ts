@@ -15,6 +15,15 @@ class AuthController {
         this.editApi = new EditUser()
     }
 
+    async getChatUsers(id: number) {
+        try {
+            const users = await this.apiChat.getChatUsers(id)
+            return users
+        } catch (e) {
+            console.log(e)
+        }
+    }
+
     async getChats(): Promise<ChatsData[] | void> {
         try {
             const user = await this.apiChat.readChats();
