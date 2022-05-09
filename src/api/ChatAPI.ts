@@ -8,6 +8,10 @@ export interface ChatsData {
     unread_count: number;
     last_message: null;
 }
+export interface addUsers {
+    users: number[],
+    chatId: number
+}
 
 export class ChatAPI extends BaseAPI {
     constructor() {
@@ -32,5 +36,8 @@ export class ChatAPI extends BaseAPI {
     }
     getChatUsers(id: number) {
         return this.http.get(`/${id}/users`)
+    }
+    addUsers(data: addUsers) {
+        return this.http.put(`/users`, data)
     }
 }

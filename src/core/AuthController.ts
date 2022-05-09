@@ -1,5 +1,5 @@
 import { AuthAPI, LoginData, SignupData, UserData } from '../api/AuthAPI';
-import { ChatAPI, ChatsData } from '../api/ChatAPI';
+import { ChatAPI, ChatsData, addUsers } from '../api/ChatAPI';
 import { EditUser, UserEditData } from '../api/EditUser'
 import { store } from '../store';
 import { deleteUser, setUser, setError } from '../store/user';
@@ -28,6 +28,15 @@ class AuthController {
         try {
             const user = await this.apiChat.readChats();
             return user;
+        } catch (e) {
+            console.log(e)
+        }
+    }
+
+    async addChatUsers(data: addUsers) {
+        try {
+            await this.apiChat.addUsers(data)
+            return true
         } catch (e) {
             console.log(e)
         }

@@ -6,23 +6,23 @@ import './chatActive.scss'
 
 export class chatActive extends Block {
     protected getStateFromProps() {
-        let chats = AuthController.getChats()
-        chats.then(chat => {
-            const newstate = {
-                inputs: [],
-                currentChat: {
-                    title: ''
-                }
-            }
-            chat.forEach(element => {
-                newstate.inputs.push(element)
-            });
-            const activeChat = chat.filter(i => {
-                return i.id == window.location.search.split('=')[1]
-            })
-            newstate.currentChat = { ...activeChat[0] }
-            this.setState(newstate)
-        })
+        // let chats = AuthController.getChats()
+        // chats.then(chat => {
+        //     const newstate = {
+        //         inputs: [],
+        //         currentChat: {
+        //             title: ''
+        //         }
+        //     }
+        //     chat.forEach(element => {
+        //         newstate.inputs.push(element)
+        //     });
+        //     const activeChat = chat.filter(i => {
+        //         return i.id == window.location.search.split('=')[1]
+        //     })
+        //     newstate.currentChat = { ...activeChat[0] }
+        //     this.setState(newstate)
+        // })
         this.state = {
             modalIsUp: false,
             values: {
@@ -35,7 +35,24 @@ export class chatActive extends Block {
                 // const modal = document.querySelector('modal')
                 // modal?.classList.add('chatcontrolmodal_visble')
                 // this.state.modalIsUp = true
-                this.state.modalIsUp = true
+                let chats = AuthController.getChats()
+                chats.then(chat => {
+                    const activeChat = chat.filter(i => {
+                        return i.id == window.location.search.split('=')[1]
+                    })
+                    const chatId = Number(activeChat[0].id)
+                    return AuthController.getChatUsers(chatId)
+                }).then(j => {
+                    const currentUser = j.find(user => {
+                        return user.id === this.props.user.id
+                    })
+                    const isAdmin = currentUser.role === 'admin' ? true : false
+                    this.state.modalIsUp = true
+                    const qe = Object.keys(this.children).find(i => {
+                        return (this.children[i]._element as HTMLElement).classList.contains('chatcontrolmodal_visble')
+                    })
+                    this.children[qe].setProps({usersList: j, allowToManage: isAdmin})
+                })
             },
             onValidate: (e: MouseEvent) => {
                 const values = {
@@ -65,12 +82,13 @@ export class chatActive extends Block {
         }
     }
     render() {
-        const { modalIsUp, values, errors, currentChat } = this.state || {}
+        const { modalIsUp, values, errors } = this.state || {}
         // language=hbs
         return `
         <div class="container container_flex container__chat">
-            {{{ChatControlModal chatId="${currentChat ? currentChat.id : undefined}" ref="asddfg" classes="${modalIsUp ? 'chatcontrolmodal_visble' : ''}"}}}
+            {{{ChatControlModal ref="asddfg" classes="${modalIsUp ? 'chatcontrolmodal_visble' : ''}"}}}
             <div class="users">
+                <span>{{zxc}}</span>
                 <div class="users__user-info">
                     <div>${this.props.user ? this.props.user.display_name ?? this.props.user.first_name : null}</div>
                     {{{Link text="Профиль" classes="users__control" href="/profile"}}}
