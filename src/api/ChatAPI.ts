@@ -40,4 +40,7 @@ export class ChatAPI extends BaseAPI {
     addUsers(data: addUsers) {
         return this.http.put(`/users`, data)
     }
+    removeUser(data: addUsers) {
+        return this.http.delete('/users', data)
+    }
 }

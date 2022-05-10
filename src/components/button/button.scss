@@ -29,6 +29,21 @@
     font-size: 11px;
   }
 
+  &_removeUser {
+    box-sizing: border-box;
+    padding: 3px 6px 4px !important;
+    width: fit-content;
+    height: fit-content;
+    background-color: $primeBlue;
+    border-radius: 4px;
+    cursor: pointer;
+    > span {
+      text-transform: uppercase;
+      font-size: 9px;
+      color: #fff;
+    }
+  }
+
   &.message-send {
     width: 28px;
     height: 28px;

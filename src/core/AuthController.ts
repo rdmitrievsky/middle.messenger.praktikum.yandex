@@ -36,6 +36,17 @@ class AuthController {
     async addChatUsers(data: addUsers) {
         try {
             await this.apiChat.addUsers(data)
+            await this.fetchUser();
+            return true
+        } catch (e) {
+            console.log(e)
+        }
+    }
+
+    async removeChatUsers(data: addUsers) {
+        try {
+            await this.apiChat.removeUser(data)
+            await this.fetchUser();
             return true
         } catch (e) {
             console.log(e)

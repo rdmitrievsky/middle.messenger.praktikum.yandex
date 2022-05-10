@@ -25,6 +25,7 @@ export class chatActive extends Block {
         // })
         this.state = {
             modalIsUp: false,
+            currentChat: -1,
             values: {
                 message: ''
             },
@@ -35,23 +36,36 @@ export class chatActive extends Block {
                 // const modal = document.querySelector('modal')
                 // modal?.classList.add('chatcontrolmodal_visble')
                 // this.state.modalIsUp = true
+                
+                // this.refs.asddfg.classList.add('chatcontrolmodal_visble')
+                // this.state.modalIsUp = true
+                let _chatId;
                 let chats = AuthController.getChats()
                 chats.then(chat => {
                     const activeChat = chat.filter(i => {
                         return i.id == window.location.search.split('=')[1]
                     })
                     const chatId = Number(activeChat[0].id)
+                    // this.state.currentChat = chatId
+                    _chatId = chatId
                     return AuthController.getChatUsers(chatId)
                 }).then(j => {
+                    // console.log(this.refs.asddfg)
                     const currentUser = j.find(user => {
                         return user.id === this.props.user.id
                     })
                     const isAdmin = currentUser.role === 'admin' ? true : false
-                    this.state.modalIsUp = true
-                    const qe = Object.keys(this.children).find(i => {
-                        return (this.children[i]._element as HTMLElement).classList.contains('chatcontrolmodal_visble')
+                    // this.state.modalIsUp = true
+                    // const qe = Object.keys(this.children).find(i => {
+                    //     return (this.children[i]._element as HTMLElement).classList.contains('chatcontrolmodal_visble')
+                    // })
+                    // this.children[qe].setProps({usersList: j, allowToManage: isAdmin, currentUserId: currentUser.id, currentChatId: this.state.currentChat})
+                    const modal = document.querySelector('.chatcontrolmodal')
+                    const qw = Object.keys(this.children).find(i => {
+                        return this.children[i].element == modal
                     })
-                    this.children[qe].setProps({usersList: j, allowToManage: isAdmin})
+                    this.children[qw].setProps({isVisible: true, usersList: j, allowToManage: isAdmin, currentUserId: currentUser.id, currentChatId: _chatId})
+                    // this.refs.asddfg.classList.add('chatcontrolmodal_visble')
                 })
             },
             onValidate: (e: MouseEvent) => {
@@ -86,9 +100,8 @@ export class chatActive extends Block {
         // language=hbs
         return `
         <div class="container container_flex container__chat">
-            {{{ChatControlModal ref="asddfg" classes="${modalIsUp ? 'chatcontrolmodal_visble' : ''}"}}}
+            {{{ChatControlModal ref="asddfg"}}}
             <div class="users">
-                <span>{{zxc}}</span>
                 <div class="users__user-info">
                     <div>${this.props.user ? this.props.user.display_name ?? this.props.user.first_name : null}</div>
                     {{{Link text="Профиль" classes="users__control" href="/profile"}}}

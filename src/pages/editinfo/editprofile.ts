@@ -108,7 +108,7 @@ export class EditProfile extends Block {
         const { avatar, display_name, first_name, second_name, email, phone, login } = this.props.user || {}
         return `
             <div class="container container_flex">
-                <a class="button" href="/profile">
+                <a class="button_back" href="/profile">
                     <div></div>
                 </a>
                 <div class="display">

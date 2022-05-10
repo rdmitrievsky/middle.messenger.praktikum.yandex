@@ -6,6 +6,7 @@ interface ButtonProps {
   text?: string;
   type: string;
   classes?: string;
+  btnUserId?: number;
   onClick: () => void;
 }
 

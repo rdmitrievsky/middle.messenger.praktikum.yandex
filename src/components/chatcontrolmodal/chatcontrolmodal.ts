@@ -11,47 +11,80 @@ export class ChatControlModal extends Block {
     protected getStateFromProps() {
         this.state = {
             testclc: () => {
-                this.props.classes = ''
+                // this.props.classes = ''
+                console.log(this.element)
+                this.element?.classList.remove('chatcontrolmodal_visble')
             },
-            // addUser: (e: MouseEvent) => {
-            //     e.preventDefault()
-            //     const user = (this.refs.addUserName as HTMLInputElement).value
-            //     this.state.qweqwe = user
-            //     const chatId = Number(this.props.chatId)
-            //     const users = AuthController.getChatUsers(chatId)
-            //     users.then(q => {
-            //         const qwe = q.find(i => {
-            //             return i.id == user 
-            //         })
-            //         if (qwe) {
-            //             return
-            //         }
-            //         // const newChatUsers
-            //         const names = q.map(i => i.first_name)
-            //         this.state.usersList = [...this.state.usersList, ...names]
-            //         // AuthController.addChatUsers()
-            //     })
-            // }
+            addUser: (e: MouseEvent) => {
+                // e.preventDefault()
+                // const user = Number((this.refs.addUserName as HTMLInputElement).value)
+                // if (!user) return
+                // // this.state.qweqwe = user
+                // const chatId = Number(this.props.currentChatId)
+                // const users = AuthController.getChatUsers(chatId)
+                // users.then(chatUsers => {
+                //     const qwe = chatUsers.find(usr => {
+                //         return usr.id == user
+                //     })
+                //     if (qwe) return
+                //     console.log('next')
+                // //     // const newChatUsers
+                // //     const names = q.map(i => i.first_name)
+                // //     this.state.usersList = [...this.state.usersList, ...names]
+                // const addUsersData = {
+                //     "users": [0],
+                //     "chatId": 0
+                // }
+                // addUsersData.chatId = chatId
+                // addUsersData.users = [user]
+                // console.log(addUsersData)
+                // const newUser = AuthController.addChatUsers(addUsersData)
+                // newUser.then(q => console.log(this.props))
+                // })
+            },
+            removeUser: (e: MouseEvent) => {
+                const daya = {
+                    "users": [71010],
+                    "chatId": 949
+                }
+                const target = e.target.tagName === 'SPAN' ? e.target.closest('button') : e.target
+                console.log(target)
+                const element = Object.keys(this.children).find(item => {
+                    return this.children[item].element == target
+                })
+
+                if (confirm('asdasd') == true) {
+                    AuthController.removeChatUsers(daya)
+                } else {
+                    console.log('MEH')
+                }
+            }
         }
     }
     protected render(): string {
-        const setClasses = this.props.classes ?? `button button_${this.props.type}`
         // language=hbs
         return `
-            <modal class="chatcontrolmodal ${setClasses}">
+            <modal class="chatcontrolmodal {{setvisible isVisible}}">
                 <div class="chatcontrolmodal__container">
-                    {{#if allowToManage}}
-                        {{{Button onClick=addUser type="prime" text="zczcxzc"}}}
-                        {{{Input ref="addUserName" type="text"}}}
+                    <div class="chatcontrolmodal__adduser">
+                        <h3>Добавить пользователя:</h3>
+                        <label>
+                            <span>ID пользователя</span>
+                            {{{Input ref="addUserName" type="number"}}}
+                            {{{Button onClick=addUser type="prime" text="Добавить"}}}
+                        </label>
+                    </div>
+                    <h3>Список пользователей:</h3>
+                    <div class="chatcontrolmodal__userlist">
                         {{#each usersList}}
-                            <div>{{this.id}}</div>
-                            <div class="qwe_{{this.role}}">qweqe</div>
+                            <div class="chatcontrolmodal__userlist__user">
+                                {{isdefined this}}
+                                {{#if (ebebebe this.id ../currentUserId ../allowToManage)}}
+                                    {{{Button type="removeUser" text="Исключить" btnUserId=this.id onClick=../removeUser}}}
+                                {{/if}}
+                            </div>
                         {{/each}}
-                    {{else}}
-                        {{#each usersList}}
-                            <div>{{this.id}}</div>
-                        {{/each}}
-                    {{/if}}
+                    </div>
                     {{{Button onClick=testclc type="prime" text="close"}}}
                 </div>
             </modal>
