@@ -1,5 +1,6 @@
 import { AuthAPI, LoginData, SignupData, UserData } from '../api/AuthAPI';
 import { ChatAPI, ChatsData, addUsers } from '../api/ChatAPI';
+import { ChatMessageAPI } from '../api/ChatMessageAPI';
 import { EditUser, UserEditData } from '../api/EditUser'
 import { store } from '../store';
 import { deleteUser, setUser, setError } from '../store/user';
@@ -8,11 +9,22 @@ class AuthController {
     private api: AuthAPI;
     private apiChat: ChatAPI;
     private editApi: EditUser
+    private chatMessages: ChatMessageAPI
 
     constructor() {
         this.api = new AuthAPI()
         this.apiChat = new ChatAPI()
         this.editApi = new EditUser()
+        this.chatMessages = new ChatMessageAPI()
+    }
+
+    async getChatToken(id: number) {
+        try {
+            const token = await this.chatMessages.readChats(id);
+            return token;
+        } catch (error) {
+            console.log(error)
+        }
     }
 
     async getChatUsers(id: number) {

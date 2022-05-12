@@ -79,6 +79,16 @@ export class chatActive extends Block {
                     values: { ...values },
                 };
 
+                console.log(values.message)
+                console.log(this.props)
+                this.props.dasocket.send(JSON.stringify({
+                    content: values.message,
+                    type: 'message',
+                }));
+                this.props.dasocket.addEventListener('message', event => {
+                    // this.props.bee = JSON.parse(event.data)
+                    console.log(event)
+                });
                 this.setState(nextState)
 
                 e.preventDefault()
@@ -95,7 +105,62 @@ export class chatActive extends Block {
             }
         }
     }
+    componentDidMount(props: any): void {
+        let token;
+        let chatId = 0;
+        let socket;
+        let asd;
+        const iserId = this.props.user.id
+        const thisprops = this.props
+
+        const chats = AuthController.getChats()
+        chats.then(chat => {
+            const activeChat = chat.filter(i => {
+                return i.id == window.location.search.split('=')[1]
+            })
+            chatId = Number(activeChat[0].id)
+            return chatId
+        }).then(q => {
+            return AuthController.getChatToken(q)
+        }).then(q => {
+            token = q.token
+            socket = new WebSocket(`wss://ya-praktikum.tech/ws/chats/${iserId}/${chatId}/${token}`);
+            thisprops.dasocket = socket
+            socket.addEventListener('open', () => {
+                console.log('Соединение установлено');
+
+                // socket.send(JSON.stringify({
+                //     content: 'Моё первое сообщение миру!',
+                //     type: 'message',
+                // }));
+
+                socket.send(JSON.stringify({
+                    content: '0',
+                    type: 'get old',
+                })); 
+            })
+            socket.addEventListener('close', event => {
+                if (event.wasClean) {
+                    console.log('Соединение закрыто чисто');
+                } else {
+                    console.log('Обрыв соединения');
+                }
+
+                console.log(`Код: ${event.code} | Причина: ${event.reason}`);
+            });
+            
+            socket.addEventListener('message', event => {
+                thisprops.bee = JSON.parse(event.data)
+                console.log(thisprops)
+            });
+
+            socket.addEventListener('error', event => {
+                console.log('Ошибка', event.message);
+            });
+        })
+    }
     render() {
+        console.log("RERENDER")
         const { modalIsUp, values, errors } = this.state || {}
         // language=hbs
         return `
@@ -133,6 +198,9 @@ export class chatActive extends Block {
                     {{#if currentChat.last_message}}
                         <span>asdads</span>
                     {{/if}}
+                    {{#each bee}}
+                        <span>{{this.content}}</span>
+                    {{/each}}
                 </div>
                 <form>
                     <label class="login__label">
