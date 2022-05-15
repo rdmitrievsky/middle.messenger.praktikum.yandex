@@ -7,6 +7,13 @@ interface BlockConstructable<Props = any> {
 }
 
 export default function registerComponent<Props extends any>(Component: BlockConstructable<Props>) {
+  Handlebars.registerHelper('getUsersMessage', function (currUserId, messageUserId) {
+    if (currUserId === messageUserId) {
+      return 'message__self'
+    } else {
+      return ''
+    }
+  })
   Handlebars.registerHelper('isdefined', function (value) {
     const { display_name: name, first_name: fName, second_name: sName, id, } = value;
     const loginName = name != null ? `@${name}` : '';
@@ -22,6 +29,19 @@ export default function registerComponent<Props extends any>(Component: BlockCon
       false
     }
   });
+  Handlebars.registerHelper('setDate', function (date) {
+    const messageDate = new Date(date);
+    const year = messageDate.getFullYear()
+    const month = messageDate.getMonth()
+    const day = messageDate.getDate()
+    return `${day} : ${month} : ${year}`
+  })
+  Handlebars.registerHelper('setTime', function (date) {
+    const messageDate = new Date(date);
+    const hours = messageDate.getHours()
+    const minutes = messageDate.getMinutes()
+    return `${hours}.${minutes}`
+  })
   Handlebars.registerHelper('setvisible', function (value) {
     if (value) {
       return 'chatcontrolmodal_visble'

@@ -150,8 +150,34 @@ export class chatActive extends Block {
             });
             
             socket.addEventListener('message', event => {
-                thisprops.bee = JSON.parse(event.data)
-                console.log(thisprops)
+                const messagesSorted = JSON.parse(event.data)
+                const messagesWithData = messagesSorted.map(message => {
+                    const d = new Date(message.time)
+                    message.formatedTime = {
+                        fullDate: d,
+                        data: `${d.getDate()}.${d.getMonth()}.${d.getFullYear()}`,
+                        time: `${d.getHours()}.${d.getMinutes()}`
+                    }
+                    return message
+                }).sort((a, b) => a.formatedTime.fullDate - b.formatedTime.fullDate)
+                const unicDates = new Set()
+                messagesWithData.forEach(i => {
+                    unicDates.add(i.formatedTime.data)
+                })
+                // console.log(Array.from(unicDates))
+                // console.log(messagesWithData)
+
+                const zcxzxxc = Array.from(unicDates).reduce((total, i) => {
+                    const qwe = messagesWithData.filter(j => {
+                        return j.formatedTime.data == i
+                    })
+                    return [...total, {'data': i, 'messages': qwe}]
+                }, [])
+
+                console.log(zcxzxxc)
+
+                thisprops.wee = zcxzxxc
+                thisprops.bee = messagesWithData
             });
 
             socket.addEventListener('error', event => {
@@ -195,12 +221,20 @@ export class chatActive extends Block {
                     {{{ChatControl onClick=qwe}}}
                 </div>
                 <div class="chat-table">
-                    {{#if currentChat.last_message}}
-                        <span>asdads</span>
-                    {{/if}}
-                    {{#each bee}}
-                        <span>{{this.content}}</span>
-                    {{/each}}
+                    <div class="chat-table__wrapper">
+                        {{#if currentChat.last_message}}
+                            <span>asdads</span>
+                        {{/if}}
+                        {{#each wee}}
+                            <span class="date-separator">{{this.data}}</span>
+                            {{#each this.messages}}
+                                <div class="chat-table__message {{getUsersMessage ../../user.id this.user_id}}">
+                                    <span>{{this.content}}</span>
+                                    <span class="chat-table__message__time">{{setTime this.time}}</span>
+                                </div>
+                            {{/each}}
+                        {{/each}}
+                    </div>
                 </div>
                 <form>
                     <label class="login__label">
